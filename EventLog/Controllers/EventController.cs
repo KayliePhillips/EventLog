@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventLog.Controllers
 {
-    public class AllEventsController : Controller
+    public class EventController : Controller
     {
-        private readonly IAllEventsRepository _repo;
+        private readonly IEventRepository _repo;
 
-        public AllEventsController(IAllEventsRepository repo)
+        public EventController(IEventRepository repo)
         {
             _repo = repo;
         }
@@ -19,6 +19,12 @@ namespace EventLog.Controllers
         {
             var allEvents = _repo.GetAllEvents();
             return View(allEvents);
+        }
+
+        public IActionResult ViewEvent(int id)
+        {
+            var viewEvent = _repo.GetEvent(id);
+            return View(viewEvent);
         }
     }
 }

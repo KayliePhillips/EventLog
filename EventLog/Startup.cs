@@ -33,7 +33,7 @@ namespace EventLog
                 return conn;
             });
 
-            services.AddTransient<IAllEventsRepository, AllEventsRepository>();
+            services.AddTransient<IEventRepository, EventRepository>();
 
             services.AddControllersWithViews();
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AllEvents>
+﻿@model IEnumerable<Event>
 
 <h2>All Events</h2>
 <table class="table">
@@ -14,10 +14,10 @@
     @foreach (var all_events in @Model)
     {
         <tr>
-            <td>@all_events.EntryID</td>
+            <td><a href=/Event/ViewEvent/@all_events.EntryID>@all_events.EntryID</a></td>
             <td>@all_events.Attendees</td>
-            <td>@all_events.Event_Type</td>
-            <td>@all_events.Special_Attributes</td>
+            <td>@all_events.EventType</td>
+            <td>@all_events.SpecialAttributes</td>
             <td>@all_events.Address</td>
             <td>@all_events.Description</td>
         </tr>

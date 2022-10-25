@@ -1,0 +1,25 @@
+﻿@model Event
+
+<h3>@Model.EventType</h3>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Attendees</th>
+        <th>Event Type</th>
+        <th>Special Attributes</th>
+        <th>Address</th>
+        <th>Description</th>
+    </tr>
+
+
+    <tr>
+        <td>@Model.EntryID</td>
+        <td>@Model.Attendees</td>
+        <td>@Model.EventType</td>
+        <td>@Model.SpecialAttributes</td>
+        <td>@Model.Address</td>
+        <td>@Model.Description</td>
+    </tr>
+
+
+</table>
