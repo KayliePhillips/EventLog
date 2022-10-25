@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AllEvents>
+
+<h2>All Events</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Attendees</th>
+        <th>Event Type</th>
+        <th>Special Attributes</th>
+        <th>Address</th>
+        <th>Description</th>
+    </tr>
+
+    @foreach (var all_events in @Model)
+    {
+        <tr>
+            <td>@all_events.EntryID</td>
+            <td>@all_events.Attendees</td>
+            <td>@all_events.Event_Type</td>
+            <td>@all_events.Special_Attributes</td>
+            <td>@all_events.Address</td>
+            <td>@all_events.Description</td>
+        </tr>
+    }
+
+</table>
