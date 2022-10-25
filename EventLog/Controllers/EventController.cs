@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventLog.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -25,6 +26,18 @@ namespace EventLog.Controllers
         {
             var viewEvent = _repo.GetEvent(id);
             return View(viewEvent);
+        }
+
+        public IActionResult InsertEvent()
+        {
+            var newEvent = _repo.AssignEvent();
+            return View(newEvent);
+        }
+
+        public IActionResult InsertNewEventToDatabase(Event eventToInsert)
+        {
+            _repo.InsertEvent(eventToInsert);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model Event
+
+<h2>Create a New Event</h2>
+
+@using (Html.BeginForm("InsertEventToDatabase", "Event", "Post"))
+{
+    <input asp-for="EventID" type="hidden" value="" />
+
+    <label asp-for="Attendees" class="control-label">Attendees</label>
+    <input type="text" name="Attendees" class="form-control" value="" />
+
+    <label asp-for="EventType" class="control-label">Event Type</label>
+    <input type="text" step="0.01" name="Event Type" class="form-control" />
+
+    <label asp-for="SpecialAttributes" class="control-label">Special Attributes</label>
+    <input type="text" step="0.01" name="Special Attributes" class="form-control" />
+
+    <label asp-for="Address" class="control-label">Address</label>
+    <input type="text" step="0.01" name="Address" class="form-control" />
+
+    <label asp-for="Description" class="control-label">Description</label>
+    <input type="text" step="0.01" name="Description" class="form-control" />
+
+    @*<div class="form-group">
+        <label for="">Select an EventType</label>
+        <select class="form-control" name="EventType" value="">
+            @foreach (var type in Model.EventTypeList)
+            {
+                <option value="@type.EventTypeName">@type.EventTypeName @type.EventType</option>
+            }
+        </select>
+    </div>*@
+
+   <input type="submit" value="Create Event" class="btn btn-primary" />
+}

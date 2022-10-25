@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<Event>
 
 <h2>All Events</h2>
+
+<div style="display: block">
+    <a href="/Event/InsertEvent/">Create a New Event</a>
+</div>
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -14,7 +19,7 @@
     @foreach (var all_events in @Model)
     {
         <tr>
-            <td><a href=/Event/ViewEvent/@all_events.EntryID>@all_events.EntryID</a></td>
+            <td><a href=/Event/ViewEvent/@all_events.EventID>@all_events.EventID</a></td>
             <td>@all_events.Attendees</td>
             <td>@all_events.EventType</td>
             <td>@all_events.SpecialAttributes</td>
