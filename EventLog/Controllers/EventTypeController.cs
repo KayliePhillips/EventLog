@@ -27,5 +27,19 @@ namespace EventLog.Controllers
             _eventTypeRepository.InsertEventType(eventTypeToInsert);
             return RedirectToAction("Index");
         }
+        public IActionResult UpdateEventType(int id)
+        {
+            var eventType = _eventTypeRepository.GetEventType(id);
+            if(eventType == null)
+            {
+                return View("EventTypeNotFound");
+            }
+            return View(eventType);
+        }
+        public IActionResult UpdateEventTypeToDatabase(EventType eventTypeToUpdate)
+        {
+            _eventTypeRepository.UpdateEventType(eventTypeToUpdate);
+            return RedirectToAction("Index");
+        }
     }
 }

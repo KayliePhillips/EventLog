@@ -8,5 +8,7 @@ namespace EventLog
     {
         public IEnumerable<EventType> GetAllEventTypes();
         public void InsertEventType(EventType eventTypeToInsert);
+        public EventType GetEventType(int id);
+        public void UpdateEventType(EventType eventTypeToUpdate);
     }
 }

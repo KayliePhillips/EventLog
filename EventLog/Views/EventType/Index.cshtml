@@ -10,6 +10,7 @@
     <tr>
         <th>ID</th>
         <th>EventType Name</th>
+        <th>Update Event Type</th>
     </tr>
 
     @foreach (var eventType in @Model)
@@ -17,6 +18,7 @@
         <tr>
             <td>@eventType.EventTypeID</td>
             <td>@eventType.EventTypeName</td>
+            <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID">Update @eventType.EventTypeName</a></td>
         </tr>
     }
 
