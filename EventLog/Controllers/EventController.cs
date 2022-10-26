@@ -30,7 +30,7 @@ namespace EventLog.Controllers
 
         public IActionResult InsertEvent()
         {
-            var newEvent = _repo.AssignEvent();
+            var newEvent = _repo.AssignEventProperties();
             return View(newEvent);
         }
 
