@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EventLog.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EventLog.Controllers
 {
@@ -16,6 +17,15 @@ namespace EventLog.Controllers
             var allEventTypesList = _eventTypeRepository.GetAllEventTypes();
 
             return View(allEventTypesList);
+        }
+        public IActionResult InsertEventType()
+        {
+            return View();
+        }
+        public IActionResult InsertNewEventTypeToDatabase(EventType eventTypeToInsert)
+        {
+            _eventTypeRepository.InsertEventType(eventTypeToInsert);
+            return RedirectToAction("Index");
         }
     }
 }

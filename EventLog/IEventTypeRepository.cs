@@ -6,9 +6,7 @@ namespace EventLog
 {
     public interface IEventTypeRepository
     {
-        //public void InsertEventType(Type newEventTypeToAdd);
-
         public IEnumerable<EventType> GetAllEventTypes();
-
+        public void InsertEventType(EventType eventTypeToInsert);
     }
 }
