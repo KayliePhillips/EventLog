@@ -20,9 +20,9 @@ namespace EventLog
 
         public Event GetEvent(int id)
         {
-            return _conn.QuerySingle<Event>("SELECT * FROM all_events WHERE EventID = @id", new { id = id });
+            return _conn.QuerySingle<Event>("SELECT * FROM all_events WHERE EventID = @ID", new { id = id });
         }
-          
+
         public void InsertEvent(Event eventToInsert)
         {
             _conn.Execute("INSERT INTO all_events (EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
@@ -74,7 +74,7 @@ namespace EventLog
         public void UpdateEvent(Event eventToUpdate)
         {
             _conn.Execute("UPDATE all_events SET EventName=@EventName, Attendees=@Attendees, EventType=@EventType, " +
-                "SpecialAttribute=@SpecialAttribute, Address=Address, Description = @Description WHERE EventID=@id",
+                "SpecialAttribute=@SpecialAttribute, Address=Address, Description = @Description WHERE EventID=@EventID",
                 new
                 {
                     EventID = eventToUpdate.EventID,
@@ -84,25 +84,15 @@ namespace EventLog
                     SpecialAttribute = eventToUpdate.SpecialAttribute,
                     Address = eventToUpdate.Address,
                     Description = eventToUpdate.Description,
-                    EventTypeList = GetEventTypes(),
-                    SpecialAttributeList = GetSpecialAttribute(),
-                    AttendeeList = GetAttendee()
-
-
+                   
                 });
         }
-        //public void UpdateEventProperties()
-        //{
-        //        var eventList = GetEventTypes();
-        //        var attendeeList = GetAttendee();
-        //        var specialAttributeList = GetSpecialAttribute();
-        //        var UpdateEvent = new Event()
-        //        {
-        //            EventTypeList = eventList,
-        //            AttendeeList = attendeeList,
-        //            SpecialAttributeList = specialAttributeList
-        //        };
-                
-        //}
+       
+        public void DeleteEvent(Event eventToDelete)
+        {
+            _conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new {id = eventToDelete.EventID});
+        }
+
+
     }
 }

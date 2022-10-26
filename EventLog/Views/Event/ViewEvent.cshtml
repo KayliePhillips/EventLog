@@ -4,6 +4,7 @@
 <table class="table">
     <tr>
         <th>ID</th>
+        <th>Event Name</th>
         <th>Attendees</th>
         <th>Event Type</th>
         <th>Special Attribute</th>
@@ -14,6 +15,7 @@
 
     <tr>
         <td>@Model.EventID</td>
+        <td>@Model.EventName</td>
         <td>@Model.Attendees</td>
         <td>@Model.EventType</td>
         <td>@Model.SpecialAttribute</td>
@@ -25,5 +27,9 @@
 </table>
 
 <div style="display: block">
-    <a href="/Event/ViewUpdateEvent/@Model.EventID">Update this Event</a>
+    <a href="/Event/ViewUpdateEvent/@Model.EventID">Update Event</a>
+</div>
+
+<div style="display: block">
+    <a href="/Event/DeleteEvent/@Model.EventID">Delete Event</a>
 </div>

@@ -23,7 +23,7 @@ namespace EventLog
 
         public void UpdateEvent(Event eventToUpdate);
 
-        //public Event UpdateEventProperties();
+        public void DeleteEvent(Event eventToDelete);
        
 
 
