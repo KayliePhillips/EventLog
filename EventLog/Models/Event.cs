@@ -7,6 +7,7 @@ namespace EventLog.Models
     public class Event
     {
         public int EventID { get; set; }
+        public string EventName { get; set; }
         public DateOnly Date { get; set; }
         public string Attendees { get; set; }
 

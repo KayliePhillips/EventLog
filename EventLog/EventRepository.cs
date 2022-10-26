@@ -25,17 +25,20 @@ namespace EventLog
           
         public void InsertEvent(Event eventToInsert)
         {
-            _conn.Execute("INSERT INTO all_events (Attendees, EventType, SpecialAttribute, Address, Description) " +
-                "VALUES (@Attendees, @EventType, @SpecialAttribute, @address, @Description);",
-                new { Attendees = eventToInsert.Attendees, EventType= eventToInsert.EventType, SpecialAttribute=eventToInsert.SpecialAttribute,
-                Address=eventToInsert.Address, Description=eventToInsert.Description});
+            _conn.Execute("INSERT INTO all_events (EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
+                "VALUES (@EventName, @Attendees, @EventType, @SpecialAttribute, @Address, @Description);",
+                new 
+                {
+                    EventName=eventToInsert.EventName,
+                    Attendees = eventToInsert.Attendees, 
+                    EventType= eventToInsert.EventType, 
+                    SpecialAttribute=eventToInsert.SpecialAttribute,
+                    Address=eventToInsert.Address, 
+                    Description=eventToInsert.Description
+                });
                 
         }
-        //Event Type Section
-        public IEnumerable<EventType>GetEventTypes()
-        {
-            return _conn.Query<EventType>("SELECT * FROM event_type;");
-        }
+        
         public Event AssignEventProperties()
         {
             var eventList = GetEventTypes();
@@ -49,32 +52,57 @@ namespace EventLog
             };
             return newEvent;
         }
+        //Event Type Section
+        public IEnumerable<EventType> GetEventTypes()
+        {
+            return _conn.Query<EventType>("SELECT * FROM event_type;");
+        }
+
         //Special attribute section
         public IEnumerable<SpecialAttribute> GetSpecialAttribute()
         {
             return _conn.Query<SpecialAttribute>("SELECT * FROM special_attribute;");
         }
-
-        //public Event AssignSpecialAttribute()
-        //{
-        //    var specialList = GetSpecialAttribute();
-        //    var newSpecial = new Event();
-        //    newSpecial.SpecialAttributeList = specialList;
-        //    return newSpecial;
-        //}
-
+                
         //Attendee section
         public IEnumerable<Attendee> GetAttendee()
         {
             return _conn.Query<Attendee>("SELECT * FROM attendee;");
         }
 
-        //public Event AssignAttendee()
+        //Update event
+        public void UpdateEvent(Event eventToUpdate)
+        {
+            _conn.Execute("UPDATE all_events SET EventName=@EventName, Attendees=@Attendees, EventType=@EventType, " +
+                "SpecialAttribute=@SpecialAttribute, Address=Address, Description = @Description WHERE EventID=@id",
+                new
+                {
+                    EventID = eventToUpdate.EventID,
+                    EventName = eventToUpdate.EventName,
+                    Attendees = eventToUpdate.Attendees,
+                    EventType = eventToUpdate.EventType,
+                    SpecialAttribute = eventToUpdate.SpecialAttribute,
+                    Address = eventToUpdate.Address,
+                    Description = eventToUpdate.Description,
+                    EventTypeList = GetEventTypes(),
+                    SpecialAttributeList = GetSpecialAttribute(),
+                    AttendeeList = GetAttendee()
+
+
+                });
+        }
+        //public void UpdateEventProperties()
         //{
-        //    var attendeeList = GetAttendee();
-        //    var newAttendee = new Event();
-        //    newAttendee.AttendeeList = attendeeList;
-        //    return newAttendee;
+        //        var eventList = GetEventTypes();
+        //        var attendeeList = GetAttendee();
+        //        var specialAttributeList = GetSpecialAttribute();
+        //        var UpdateEvent = new Event()
+        //        {
+        //            EventTypeList = eventList,
+        //            AttendeeList = attendeeList,
+        //            SpecialAttributeList = specialAttributeList
+        //        };
+                
         //}
     }
 }

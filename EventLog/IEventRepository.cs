@@ -18,12 +18,12 @@ namespace EventLog
         //related to special_attribute
         public IEnumerable<SpecialAttribute> GetSpecialAttribute();
 
-        //public Event AssignSpecialAttribute();
-
         //related to attendee
         public IEnumerable<Attendee> GetAttendee();
 
-        //public Event AssignAttendee();
+        public void UpdateEvent(Event eventToUpdate);
+
+        //public Event UpdateEventProperties();
        
 
 

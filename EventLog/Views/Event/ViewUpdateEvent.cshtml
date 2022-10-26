@@ -1,13 +1,11 @@
 ﻿@model Event
 
-<h2>Create a New Event</h2>
+<h2>Update Event @Model.EventName</h2>
 
-@using (Html.BeginForm("InsertNewEventToDatabase", "Event", "Post"))
+@using (Html.BeginForm("UpdateEventToDatabase", "Event", "Post"))
 {
-    <input asp-for="EventID" type="hidden" value="" />
-
     <label asp-for="EventName" class="control-label">Event Name</label>
-    <input type="text" step="0.01" name="EventName" class="form-control" />
+    <input type="text" name="EventName" class="form-control" />
 
 
     //Attendee drop down menu
@@ -51,5 +49,6 @@
 
     
 
-   <input type="submit" value="Create Event" class="btn btn-primary" />
+   <input type="submit" value="Update Event" class="btn btn-primary" />
+
 }

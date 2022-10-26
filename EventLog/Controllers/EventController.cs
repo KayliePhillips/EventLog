@@ -39,5 +39,25 @@ namespace EventLog.Controllers
             _repo.InsertEvent(eventToInsert);
             return RedirectToAction("Index");
         }
+
+        public IActionResult ViewUpdateEvent(int id)
+        {
+            var updateEvent = _repo.GetEvent(id);
+            updateEvent = _repo.AssignEventProperties();
+            if(updateEvent == null)
+            {
+                return View("Event Not Found");
+            }
+            return View(updateEvent);
+        }
+
+        public IActionResult UpdateEventToDatabase(Event eventToUpdate)
+        {
+            _repo.UpdateEvent(eventToUpdate);
+            return RedirectToAction("ViewEvent", new { id = eventToUpdate.EventID });
+        }
+
+
+
     }
 }
