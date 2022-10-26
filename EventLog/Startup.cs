@@ -34,6 +34,7 @@ namespace EventLog
             });
 
             services.AddTransient<IEventRepository, EventRepository>();
+            services.AddTransient<IEventTypeRepository, EventTypeRepository>();
 
             services.AddControllersWithViews();
         }

@@ -4,9 +4,18 @@ namespace EventLog.Controllers
 {
     public class EventTypeController : Controller
     {
+        private readonly IEventTypeRepository _eventTypeRepository;
+
+        public EventTypeController(IEventTypeRepository eventTypeRepository)
+        {
+            _eventTypeRepository = eventTypeRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var allEventTypesList = _eventTypeRepository.GetAllEventTypes();
+
+            return View(allEventTypesList);
         }
     }
 }

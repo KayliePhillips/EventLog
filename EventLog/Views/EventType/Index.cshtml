@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<EventType>
+
+<h2>All Event Types</h2>
+
+<div style="display: block">
+    <a href="/EventType/InsertEventType/">Create a New Event Type</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>EventType Name</th>
+    </tr>
+
+    @foreach (var eventType in @Model)
+    {
+        <tr>
+            <td>@eventType.EventTypeID</td>
+            <td>@eventType.EventTypeName</td>
+        </tr>
+    }
+
+</table>
