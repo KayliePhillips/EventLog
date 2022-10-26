@@ -90,8 +90,9 @@ namespace EventLog
        
         public void DeleteEvent(Event eventToDelete)
         {
+            //_conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new {id = eventToDelete.EventID});
             _conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new {id = eventToDelete.EventID});
-        }
+        } 
 
 
     }
