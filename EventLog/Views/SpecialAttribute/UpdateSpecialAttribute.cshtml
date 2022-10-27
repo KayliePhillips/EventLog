@@ -1,0 +1,25 @@
+﻿@model SpecialAttribute
+
+<h2>Update or Delete @Model.SpecialAttributeName</h2>
+
+@using (Html.BeginForm("UpdateSpecialAttributeToDatabase", "SpecialAttribute", "Post"))
+{
+    <input asp-for="SpecialAttributeID" type="hidden" value="@Model.SpecialAttributeID" />
+
+    <label asp-for="SpecialAttributeName" class="control-label">Update Special Attribute Name</label>
+    <input type="text" name="SpecialAttributeName" class="form-control" value="@Model.SpecialAttributeName" />
+
+
+    <input type="submit" value="Update Special Attribute" class="btn btn-primary" />
+}
+
+<div style="display: block" , align="right">
+
+    @using (Html.BeginForm("DeleteSpecialAttribute", "SpecialAttribute", "Post"))
+
+    {
+        <input type="hidden" asp-for="SpecialAttributeName" value="@Model.SpecialAttributeID" />
+        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete @Model.SpecialAttributeName" />
+    }
+
+</div>

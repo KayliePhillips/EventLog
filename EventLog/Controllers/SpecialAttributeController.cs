@@ -23,5 +23,39 @@ namespace EventLog.Controllers
             var allSpecialAttributesList = _specialAttributeRepository.GetAllSpecialAttributes();
             return View(allSpecialAttributesList);
         }
+
+        public IActionResult InsertSpecialAttribute()
+        {
+            return View();
+        }
+
+        public IActionResult InsertNewSpecialAttributeToDatabase(SpecialAttribute specialAttributeToInsert)
+        {
+            _specialAttributeRepository.InsertSpecialAttribute(specialAttributeToInsert);
+            return RedirectToAction("Index");
+
+        }
+
+        public IActionResult UpdateSpecialAttribute(int id)
+        {
+            var specialAttribute = _specialAttributeRepository.GetSpecialAttribute(id);
+            if(specialAttribute == null)
+            {
+                return View("Special Attribute Not Found");
+            }
+            return View(specialAttribute);
+        }
+
+        public IActionResult UpdateSpecialAttributeToDatabase(SpecialAttribute specialAttributeToUpdate)
+        {
+            _specialAttributeRepository.UpdateSpecialAttribute(specialAttributeToUpdate);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteSpecialAttribute(SpecialAttribute specialAttributeToDelete)
+        {
+            _specialAttributeRepository.DeleteSpecialAttribute(specialAttributeToDelete);
+            return RedirectToAction("Index");
+        }
     }
 }
