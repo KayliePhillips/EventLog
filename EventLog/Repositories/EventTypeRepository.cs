@@ -2,7 +2,7 @@
 using EventLog.Models;
 using System.Data;
 
-namespace EventLog
+namespace EventLog.Repositories
 {
     public class EventTypeRepository : IEventTypeRepository
     {
@@ -20,16 +20,16 @@ namespace EventLog
 
         public void InsertEventType(EventType eventTypeToInsert)
         {
-            _connection.Execute("INSERT INTO event_type (EventTypeName) VALUES (@EventTypeName);", new { EventTypeName = eventTypeToInsert.EventTypeName });
+            _connection.Execute("INSERT INTO event_type (EventTypeName) VALUES (@EventTypeName);", new { eventTypeToInsert.EventTypeName });
         }
         public EventType GetEventType(int id)
         {
-            return _connection.QuerySingle<EventType>("SELECT * FROM event_type WHERE EventTypeID = @id;", new { id = id });
+            return _connection.QuerySingle<EventType>("SELECT * FROM event_type WHERE EventTypeID = @id;", new { id });
         }
         public void UpdateEventType(EventType eventTypeToUpdate)
         {
-            _connection.Execute("UPDATE event_type SET EventTypeName = @name WHERE EventTypeID = @id;", 
-                new {name = eventTypeToUpdate.EventTypeName, id = eventTypeToUpdate.EventTypeID});
+            _connection.Execute("UPDATE event_type SET EventTypeName = @name WHERE EventTypeID = @id;",
+                new { name = eventTypeToUpdate.EventTypeName, id = eventTypeToUpdate.EventTypeID });
         }
         public void DeleteEventType(EventType eventTypeToDelete)
         {

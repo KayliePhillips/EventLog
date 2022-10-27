@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using EventLog.Models;
 
-namespace EventLog
+namespace EventLog.Repositories
 {
     public interface IEventRepository
     {
@@ -24,7 +24,7 @@ namespace EventLog
         public void UpdateEvent(Event eventToUpdate);
 
         public void DeleteEvent(Event eventToDelete);
-       
+
 
 
     }

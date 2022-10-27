@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SpecialAttribute>
+
+<h2>All Special Attributes</h2>
+
+<div style="display: block">
+    <a href="/SpecialAttribute/InsertSpecialAttribute/">Create a New Special Attribute</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Special Attribute Name</th>
+        <th>Update or Delete </th>
+
+    </tr>
+
+    @foreach (var specialAttribute in @Model)
+    {
+        <tr>
+            <td>@specialAttribute.SpecialAttributeID</td>
+            <td>@specialAttribute.SpecialAttributeName</td>
+            <td><a href="/SpecialAttribute/UpdateSpecialAttribute/@specialAttribute.SpecialAttributeID">
+                Update or Delete @specialAttribute.SpecialAttributeName</a></td>
+
+        </tr>
+    }
+
+</table>

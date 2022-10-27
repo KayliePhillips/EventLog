@@ -2,7 +2,7 @@
 using EventLog.Models;
 using System.Data;
 
-namespace EventLog
+namespace EventLog.Repositories
 {
     public class EventRepository : IEventRepository
     {
@@ -20,25 +20,25 @@ namespace EventLog
 
         public Event GetEvent(int id)
         {
-            return _conn.QuerySingle<Event>("SELECT * FROM all_events WHERE EventID = @ID", new { id = id });
+            return _conn.QuerySingle<Event>("SELECT * FROM all_events WHERE EventID = @ID", new { id });
         }
 
         public void InsertEvent(Event eventToInsert)
         {
             _conn.Execute("INSERT INTO all_events (EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
                 "VALUES (@EventName, @Attendees, @EventType, @SpecialAttribute, @Address, @Description);",
-                new 
+                new
                 {
-                    EventName=eventToInsert.EventName,
-                    Attendees = eventToInsert.Attendees, 
-                    EventType= eventToInsert.EventType, 
-                    SpecialAttribute=eventToInsert.SpecialAttribute,
-                    Address=eventToInsert.Address, 
-                    Description=eventToInsert.Description
+                    eventToInsert.EventName,
+                    eventToInsert.Attendees,
+                    eventToInsert.EventType,
+                    eventToInsert.SpecialAttribute,
+                    eventToInsert.Address,
+                    eventToInsert.Description
                 });
-                
+
         }
-        
+
         public Event AssignEventProperties()
         {
             var eventList = GetEventTypes();
@@ -63,7 +63,7 @@ namespace EventLog
         {
             return _conn.Query<SpecialAttribute>("SELECT * FROM special_attribute;");
         }
-                
+
         //Attendee section
         public IEnumerable<Attendee> GetAttendee()
         {
@@ -77,21 +77,21 @@ namespace EventLog
                 "SpecialAttribute=@SpecialAttribute, Address=Address, Description = @Description WHERE EventID=@EventID",
                 new
                 {
-                    EventID = eventToUpdate.EventID,
-                    EventName = eventToUpdate.EventName,
-                    Attendees = eventToUpdate.Attendees,
-                    EventType = eventToUpdate.EventType,
-                    SpecialAttribute = eventToUpdate.SpecialAttribute,
-                    Address = eventToUpdate.Address,
-                    Description = eventToUpdate.Description,
-                   
+                    eventToUpdate.EventID,
+                    eventToUpdate.EventName,
+                    eventToUpdate.Attendees,
+                    eventToUpdate.EventType,
+                    eventToUpdate.SpecialAttribute,
+                    eventToUpdate.Address,
+                    eventToUpdate.Description,
+
                 });
         }
-       
+
         public void DeleteEvent(Event eventToDelete)
         {
-            _conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new {id = eventToDelete.EventID});
-        } 
+            _conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new { id = eventToDelete.EventID });
+        }
 
 
     }

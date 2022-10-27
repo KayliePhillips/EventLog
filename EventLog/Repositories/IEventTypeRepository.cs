@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using EventLog.Models;
 
-namespace EventLog
+namespace EventLog.Repositories
 {
     public interface IEventTypeRepository
     {
