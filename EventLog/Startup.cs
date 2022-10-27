@@ -37,6 +37,7 @@ namespace EventLog
             services.AddTransient<IEventRepository, EventRepository>();
             services.AddTransient<IEventTypeRepository, EventTypeRepository>();
             services.AddTransient<ISpecialAttributeRepository, SpecialAttributeRepository>();
+            services.AddTransient<IAttendeeRepository, AttendeeRepository>();
 
             services.AddControllersWithViews();
         }

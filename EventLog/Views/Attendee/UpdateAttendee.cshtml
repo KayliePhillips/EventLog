@@ -1,0 +1,25 @@
+﻿@model Attendee
+
+<h2>Update or Delete @Model.AttendeeName</h2>
+
+@using (Html.BeginForm("UpdateAttendeeToDatabase", "Attendee", "Post"))
+{
+    <input asp-for="AttendeeID" type="hidden" value="@Model.AttendeeID" />
+
+    <label asp-for="AttendeeName" class="control-label">Update Attendee</label>
+    <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
+
+
+    <input type="submit" value="Update Attendee" class="btn btn-primary" />
+}
+
+<div style="display: block" , align="right">
+
+    @using (Html.BeginForm("DeleteAttendee", "Attendee", "Post"))
+
+    {
+        <input type="hidden" asp-for="AttendeeName" value="@Model.AttendeeID" />
+        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete @Model.AttendeeName" />
+    }
+
+</div>
