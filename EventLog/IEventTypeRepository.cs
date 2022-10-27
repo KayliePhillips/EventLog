@@ -10,5 +10,6 @@ namespace EventLog
         public void InsertEventType(EventType eventTypeToInsert);
         public EventType GetEventType(int id);
         public void UpdateEventType(EventType eventTypeToUpdate);
+        public void DeleteEventType(EventType eventTypeToDelete);
     }
 }

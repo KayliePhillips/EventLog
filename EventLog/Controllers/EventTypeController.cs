@@ -41,5 +41,10 @@ namespace EventLog.Controllers
             _eventTypeRepository.UpdateEventType(eventTypeToUpdate);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteEventType(EventType eventTypeToDelete)
+        {
+            _eventTypeRepository.DeleteEventType(eventTypeToDelete);
+            return RedirectToAction("Index");
+        }
     }
 }
