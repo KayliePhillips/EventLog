@@ -3,6 +3,6 @@
     public class SpecialAttribute
     {
         public int SpecialAttributeID { get; set; }
-        public string SpecialAttributeName { get; set; }
+        public string? SpecialAttributeName { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace EventLog
         }
         public void DeleteEventType(EventType eventTypeToDelete)
         {
-            _connection.Execute("DELETE FROM all_events WHERE EventTypeID = @id;", new { id = eventTypeToDelete.EventTypeID });
+            _connection.Execute("DELETE FROM all_events WHERE EventType = @name;", new { name = eventTypeToDelete.EventTypeName });
             _connection.Execute("DELETE FROM event_type WHERE EventTypeID = @id;", new { id = eventTypeToDelete.EventTypeID });
         }
     }

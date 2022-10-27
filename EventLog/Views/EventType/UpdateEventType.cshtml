@@ -1,6 +1,6 @@
 ﻿@model EventType
 
-<h2>Update @Model.EventTypeName</h2>
+<h2>Update or Delete @Model.EventTypeName</h2>
 
 @using (Html.BeginForm("UpdateEventTypeToDatabase", "EventType", "Post")) 
 {
@@ -12,3 +12,14 @@
 
     <input type="submit" value="Update Event Type" class="btn btn-primary" />
 }
+
+<div style="display: block" , align="right">
+
+    @using (Html.BeginForm("DeleteEventType", "EventType", "Post"))
+
+    {
+        <input type="hidden" asp-for="EventTypeName" value="@Model.EventTypeID" />
+        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete @Model.EventTypeName" /> 
+    }
+
+</div>

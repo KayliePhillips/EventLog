@@ -10,8 +10,8 @@
     <tr>
         <th>ID</th>
         <th>EventType Name</th>
-        <th>Update Event Type</th>
-        <th>Delete Event Type</th>
+        <th>Update or Delete Event Type</th>
+       
     </tr>
 
     @foreach (var eventType in @Model)
@@ -19,14 +19,8 @@
         <tr>
             <td>@eventType.EventTypeID</td>
             <td>@eventType.EventTypeName</td>
-            <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID">Update @eventType.EventTypeName</a></td>
-            <td>
-                @using (Html.BeginForm("DeleteEventType", "EventType", "Post")) 
-                {
-                    <input type="hidden" value="@eventType.EventTypeID" />
-                    <input type="submit" @*class="btn btn-danger"*@ onclick="return confirm('Are you sure?')" value="Delete @eventType.EventTypeName" />
-                }
-            </td>
+            <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID">Update or Delete @eventType.EventTypeName</a></td>
+           
         </tr>
     }
 
