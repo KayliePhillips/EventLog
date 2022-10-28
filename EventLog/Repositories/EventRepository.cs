@@ -25,16 +25,17 @@ namespace EventLog.Repositories
 
         public void InsertEvent(Event eventToInsert)
         {
-            _conn.Execute("INSERT INTO all_events (EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
-                "VALUES (@EventName, @Attendees, @EventType, @SpecialAttribute, @Address, @Description);",
+            _conn.Execute("INSERT INTO all_events (Date, EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
+                "VALUES (@date, @eventName, @attendees, @eventType, @specialAttribute, @address, @description);",
                 new
                 {
-                    eventToInsert.EventName,
-                    eventToInsert.Attendees,
-                    eventToInsert.EventType,
-                    eventToInsert.SpecialAttribute,
-                    eventToInsert.Address,
-                    eventToInsert.Description
+                    date = eventToInsert.Date,
+                    eventName= eventToInsert.EventName,
+                    attendees = eventToInsert.Attendees,
+                    eventType = eventToInsert.EventType,
+                    specialAttribute = eventToInsert.SpecialAttribute,
+                    address = eventToInsert.Address,
+                    description = eventToInsert.Description
                 });
 
         }
@@ -73,17 +74,18 @@ namespace EventLog.Repositories
         //Update event
         public void UpdateEvent(Event eventToUpdate)
         {
-            _conn.Execute("UPDATE all_events SET EventName=@EventName, Attendees=@Attendees, EventType=@EventType, " +
-                "SpecialAttribute=@SpecialAttribute, Address=Address, Description = @Description WHERE EventID=@EventID",
+            _conn.Execute("UPDATE all_events SET Date=@date EventName=@eventName, Attendees=@attendees, EventType=@eventType, " +
+                "SpecialAttribute=@specialAttribute, Address=address, Description = @description WHERE EventID=@eventID",
                 new
                 {
-                    eventToUpdate.EventID,
-                    eventToUpdate.EventName,
-                    eventToUpdate.Attendees,
-                    eventToUpdate.EventType,
-                    eventToUpdate.SpecialAttribute,
-                    eventToUpdate.Address,
-                    eventToUpdate.Description,
+                    date = eventToUpdate.Date,
+                    eventName = eventToUpdate.EventName,
+                    attendees = eventToUpdate.Attendees,
+                    eventType = eventToUpdate.EventType,
+                    specialAttribute = eventToUpdate.SpecialAttribute,
+                    address = eventToUpdate.Address,
+                    description = eventToUpdate.Description,
+                    eventID = eventToUpdate.EventID
 
                 });
         }

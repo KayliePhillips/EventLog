@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 
 
+
 namespace EventLog.Models
 {
     public class Event
     {
         public int EventID { get; set; }
         public string? EventName { get; set; }
-        public DateOnly Date { get; set; }
+
+        public string Date { get; set; }
         public string? Attendees { get; set; }
 
         public string? EventType { get; set; }
@@ -21,5 +23,6 @@ namespace EventLog.Models
         public IEnumerable<SpecialAttribute> SpecialAttributeList { get; set; }
 
         public IEnumerable<Attendee> AttendeeList { get; set; }
+        //public object Date { get; internal set; }
     }
 }

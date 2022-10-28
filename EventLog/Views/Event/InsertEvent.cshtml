@@ -6,6 +6,9 @@
 {
     <input asp-for="EventID" type="hidden" value="" />
 
+    <label asp-for="Date" class="control-label">Date</label>
+    <input type="text" name="Date" class="form-control" value="@Model.Date" />
+
     <label asp-for="EventName" class="control-label">Event Name</label>
     <input type="text" name="EventName" class="form-control" value="" />
 
