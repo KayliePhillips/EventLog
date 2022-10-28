@@ -36,7 +36,7 @@ namespace EventLog.Repositories
 
         public void DeleteSpecialAttribute(SpecialAttribute specialAttributeToDelete)
         {
-            _specialConn.Execute("DELETE FROM all_event WHERE SpecialAttributeName = @name;", new { name = specialAttributeToDelete.SpecialAttributeName });
+            _specialConn.Execute("DELETE FROM all_events WHERE SpecialAttribute = @name;", new { name = specialAttributeToDelete.SpecialAttributeName });
             _specialConn.Execute("DELETE FROM special_attribute WHERE SpecialAttributeID = @id;", new { id = specialAttributeToDelete.SpecialAttributeID });
         }
 
