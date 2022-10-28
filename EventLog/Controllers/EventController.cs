@@ -19,11 +19,11 @@ namespace EventLog.Controllers
             _repo = repo;
         }
 
-        public IActionResult Index()
-        {
-            var allEvents = _repo.GetAllEvents();
-            return View(allEvents);
-        }
+        //public IActionResult Index()
+        //{
+        //    var allEvents = _repo.GetAllEvents();
+        //    return View(allEvents);
+        //}
         
         public IActionResult ViewEvent(int id)
         {
@@ -66,6 +66,47 @@ namespace EventLog.Controllers
             _repo.DeleteEvent(eventToDelete);
             return RedirectToAction("Index");
         }
+
+        //Search -- needed to update the index method
+        public IActionResult Index(string searchString)
+        {
+
+            //ViewData["DateSortParam"] = sortOrder == "Date" ? "date_desc" : "Date";
+           // ViewData["EventNameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+          //  ViewData["Attendees"] = sortOrder == "Attendees" ? "attendee_desc" : "";
+            _ = ViewData["CurrentFilter"] == searchString;
+
+            var events = _repo.GetAllEvents();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                events = events.Where(s => s.EventName.Contains(searchString));
+            }
+
+            //switch (sortOrder)
+            //{
+            //    case "Date":
+            //        events = events.OrderByDescending(s => s.Date);
+            //        break;
+            //    case "name_desc":
+            //        events = events.OrderByDescending(s => s.EventType);
+            //        break;
+            //    case "Attendees":
+            //        events = events.OrderByDescending(s => s.Attendees);
+            //        break;
+            //    default:
+            //        events = events.OrderByDescending(s => s.EventType);
+            //        break;
+            //};
+
+
+
+            return View(events);
+
+
+
+        }
+
 
     }
 }
