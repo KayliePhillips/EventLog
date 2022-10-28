@@ -19,7 +19,6 @@ namespace EventLog.Controllers
             _repo = repo;
         }
 
-        
         public IActionResult Index()
         {
             var allEvents = _repo.GetAllEvents();

@@ -4,6 +4,8 @@
 
 @using (Html.BeginForm("UpdateEventToDatabase", "Event", "Post"))
 {
+    <input asp-for="EventID" type="hidden" value="@Model.EventID" />
+
     <label asp-for="Date" class="control-label">Date</label>
     <input type="text" name="Date" class="form-control" value="@Model.Date" />
 

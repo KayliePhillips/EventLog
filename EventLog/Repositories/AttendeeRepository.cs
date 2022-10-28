@@ -35,9 +35,8 @@ namespace EventLog.Repositories
 
         public void DeleteAttendee(Attendee attendeeToDelete)
         {
-            _attendeeConn.Execute("DELETE FROM all_events WHERE Attendees = @name;", 
-                new {name = attendeeToDelete.AttendeeName});
-            _attendeeConn.Execute("DELETE FROM attendee WHERE AttendeeID = @id;", new { id = attendeeToDelete.AttendeeID });
+            _attendeeConn.Execute("DELETE FROM all_events WHERE Attendees = @name;", new {name = attendeeToDelete.AttendeeName});
+            _attendeeConn.Execute("DELETE FROM attendee WHERE AttendeeName = @name;", new { name = attendeeToDelete.AttendeeName });
         }
     }
 }

@@ -23,6 +23,6 @@ namespace EventLog.Models
         public IEnumerable<SpecialAttribute> SpecialAttributeList { get; set; }
 
         public IEnumerable<Attendee> AttendeeList { get; set; }
-        //public object Date { get; internal set; }
+        
     }
 }

@@ -31,7 +31,7 @@ namespace EventLog.Repositories
                 {
                     date = eventToInsert.Date,
                     eventName= eventToInsert.EventName,
-                    attendees = eventToInsert.Attendees,
+                    attendees= eventToInsert.Attendees,
                     eventType = eventToInsert.EventType,
                     specialAttribute = eventToInsert.SpecialAttribute,
                     address = eventToInsert.Address,
