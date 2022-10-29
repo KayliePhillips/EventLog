@@ -15,7 +15,7 @@
     //Attendee drop down menu
     <div class="form-group">
         <label for="">Select an Attendee</label>
-        <select class="form-control" name="Attendee" value="">
+        <select class="form-control" name="Attendees" value="">
             @foreach (var type in Model.AttendeeList)
             {
                 <option value="@type.AttendeeName">@type.AttendeeName</option>
