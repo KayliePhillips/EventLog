@@ -18,7 +18,7 @@
     @using (Html.BeginForm("DeleteAttendee", "Attendee", "Post"))
 
     {
-        <input type="hidden" asp-for="AttendeeName" value="@Model.AttendeeID" />
+        <input type="hidden" asp-for="AttendeeName" value="@Model.AttendeeName" />
         <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Attendee" />
     }
 

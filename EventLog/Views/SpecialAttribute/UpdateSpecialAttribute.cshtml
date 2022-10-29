@@ -22,7 +22,7 @@
     @using (Html.BeginForm("DeleteSpecialAttribute", "SpecialAttribute", "Post"))
 
     {
-        <input type="hidden" asp-for="SpecialAttributeName" value="@Model.SpecialAttributeID" />
+        <input type="hidden" asp-for="SpecialAttributeName" value="@Model.SpecialAttributeName" />
         <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete Special Attribute" />
     }
 

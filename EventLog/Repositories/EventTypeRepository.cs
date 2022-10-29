@@ -32,8 +32,7 @@ namespace EventLog.Repositories
                 new { name = eventTypeToUpdate.EventTypeName, id = eventTypeToUpdate.EventTypeID });
         }
         public void DeleteEventType(EventType eventTypeToDelete)
-        {
-            
+        {            
             _connection.Execute("DELETE FROM event_type WHERE EventTypeID = @id;", new { id = eventTypeToDelete.EventTypeID });
             _connection.Execute("DELETE FROM all_events WHERE EventType = @name;", new { name = eventTypeToDelete.EventTypeName });
         }
