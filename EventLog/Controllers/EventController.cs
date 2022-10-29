@@ -13,19 +13,11 @@ namespace EventLog.Controllers
     public class EventController : Controller
     {
         private readonly IEventRepository _repo;
-        private readonly IEventTypeRepository _eventTypeRepo;
 
-        public EventController(IEventRepository repo, IEventTypeRepository eventTypeRepo)
+        public EventController(IEventRepository repo)
         {
             _repo = repo;
-            _eventTypeRepo = eventTypeRepo;
         }
-
-        //public IActionResult Index()
-        //{
-        //    var allEvents = _repo.GetAllEvents();
-        //    return View(allEvents);
-        //}
 
         public IActionResult ViewEvent(int id)
         {
@@ -48,7 +40,7 @@ namespace EventLog.Controllers
         public IActionResult ViewUpdateEvent(int id)
         {
             var updateEvent = _repo.GetEvent(id);
-            updateEvent = _repo.AssignEventProperties();
+            updateEvent = _repo.AssignEventProperties(updateEvent);
             if(updateEvent == null)
             {
                 return View("Event Not Found");

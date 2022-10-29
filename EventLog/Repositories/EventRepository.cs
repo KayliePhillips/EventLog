@@ -42,16 +42,27 @@ namespace EventLog.Repositories
 
         public Event AssignEventProperties()
         {
-            var eventList = GetEventTypes();
+            var eventTypeList = GetEventTypes();
             var attendeeList = GetAttendee();
             var specialAttributeList = GetSpecialAttribute();
             var newEvent = new Event()
             {
-                EventTypeList = eventList,
+                EventTypeList = eventTypeList,
                 AttendeeList = attendeeList,
                 SpecialAttributeList = specialAttributeList
             };
             return newEvent;
+        }
+        public Event AssignEventProperties(Event eventToUpdate)
+        {
+            var eventTypeList = GetEventTypes();
+            var attendeeList = GetAttendee();
+            var specialAttributeList = GetSpecialAttribute();
+            eventToUpdate.EventTypeList = eventTypeList;
+            eventToUpdate.AttendeeList = attendeeList;
+            eventToUpdate.SpecialAttributeList = specialAttributeList;
+            
+            return eventToUpdate;
         }
         //Event Type Section
         public IEnumerable<EventType> GetEventTypes()
@@ -74,8 +85,8 @@ namespace EventLog.Repositories
         //Update event
         public void UpdateEvent(Event eventToUpdate)
         {
-            _conn.Execute("UPDATE all_events SET Date=@date EventName=@eventName, Attendees=@attendees, EventType=@eventType, " +
-                "SpecialAttribute=@specialAttribute, Address=address, Description = @description WHERE EventID=@eventID",
+            _conn.Execute("UPDATE all_events SET Date=@date, EventName=@eventName, Attendees=@attendees, EventType=@eventType, " +
+                "SpecialAttribute=@specialAttribute, Address=@address, Description = @description WHERE EventID=@eventID",
                 new
                 {
                     date = eventToUpdate.Date,

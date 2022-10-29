@@ -14,6 +14,7 @@ namespace EventLog.Repositories
         //Related to event_type
         public IEnumerable<EventType> GetEventTypes();
         public Event AssignEventProperties();
+        public Event AssignEventProperties(Event eventToUpdate);
 
         //related to special_attribute
         public IEnumerable<SpecialAttribute> GetSpecialAttribute();
