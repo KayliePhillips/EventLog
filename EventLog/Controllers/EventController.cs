@@ -13,10 +13,12 @@ namespace EventLog.Controllers
     public class EventController : Controller
     {
         private readonly IEventRepository _repo;
+        private readonly IEventTypeRepository _eventTypeRepo;
 
-        public EventController(IEventRepository repo)
+        public EventController(IEventRepository repo, IEventTypeRepository eventTypeRepo)
         {
             _repo = repo;
+            _eventTypeRepo = eventTypeRepo;
         }
 
         //public IActionResult Index()
@@ -24,7 +26,7 @@ namespace EventLog.Controllers
         //    var allEvents = _repo.GetAllEvents();
         //    return View(allEvents);
         //}
-        
+
         public IActionResult ViewEvent(int id)
         {
             var viewEvent = _repo.GetEvent(id);
@@ -74,13 +76,18 @@ namespace EventLog.Controllers
             //ViewData["DateSortParam"] = sortOrder == "Date" ? "date_desc" : "Date";
            // ViewData["EventNameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
           //  ViewData["Attendees"] = sortOrder == "Attendees" ? "attendee_desc" : "";
-            _ = ViewData["CurrentFilter"] == searchString;
+            _=ViewData["CurrentFilter"] == searchString;
 
             var events = _repo.GetAllEvents();
+            //var eventtype = _eventTypeRepo.GetAllEventTypes();
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                events = events.Where(s => s.EventName.Contains(searchString));
+                events = events.Where(x => x.EventName.ToLower().Contains(searchString.ToLower()) || x.EventType.ToLower().Contains(searchString.ToLower()) ||
+                                           x.SpecialAttribute.ToLower().Contains(searchString.ToLower()) || x.Attendees.ToLower().Contains(searchString.ToLower()) ||
+                                           x.Date.ToLower().Contains(searchString.ToLower()) || x.Address.ToLower().Contains(searchString.ToLower()) ||
+                                           x.Description.ToLower().Contains(searchString.ToLower()));
+
             }
 
             //switch (sortOrder)

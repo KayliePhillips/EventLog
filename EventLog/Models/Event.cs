@@ -8,15 +8,15 @@ namespace EventLog.Models
     public class Event
     {
         public int EventID { get; set; }
-        public string? EventName { get; set; }
+        public string? EventName { get; set; } = string.Empty;
 
-        public string Date { get; set; }
-        public string? Attendees { get; set; }
+        public string? Date { get; set; } = string.Empty;
+        public string? Attendees { get; set; } = string.Empty;
 
-        public string? EventType { get; set; }
-        public string? SpecialAttribute { get; set; }
-        public string? Address { get; set; }
-        public string? Description { get; set; }
+        public string? EventType { get; set; } = string.Empty;
+        public string? SpecialAttribute { get; set; } = string.Empty;
+        public string? Address { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
 
         public IEnumerable<EventType> EventTypeList { get; set; }
 

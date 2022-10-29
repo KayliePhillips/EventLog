@@ -6,6 +6,16 @@
     <a href="/Event/InsertEvent/">Create a New Event</a>
 </div>
 
+<form asp-action="Index" method="get" align="right">
+    <div class="form-actions no-color" >
+        <p>
+             <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search"  /> 
+            @*<a asp-action="Index">Back to Full List</a>*@
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -34,20 +44,6 @@
 
 </table>
 
-<form asp-controller="EventController" asp-action="Index">
-    <p>
-        Event Search: <input type="text" name="SearchString" />
-        <input type="submit" value="Search" />
-    </p>
-</form>
 
 
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by EventType: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-    </div>
-</form>
+
