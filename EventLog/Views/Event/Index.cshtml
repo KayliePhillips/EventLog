@@ -20,27 +20,32 @@
 
     <table class="table">
         <tr>
-            <th>ID</th>
+            
             <th>Date</th>
             <th>Event Name</th>
             <th>Attendees</th>
             <th>Event Type</th>
             <th>Special Attribute</th>
             <th>Address</th>
-            <th>Description</th>
+            @*<th>Description</th>*@
+            <th></th>
         </tr>
 
         @foreach (var all_events in @Model)
         {
             <tr>
-                <td><a href=/Event/ViewEvent/@all_events.EventID>@all_events.EventID</a></td>
+                
                 <td>@all_events.Date</td>
                 <td>@all_events.EventName</td>
                 <td>@all_events.Attendees</td>
                 <td>@all_events.EventType</td>
                 <td>@all_events.SpecialAttribute</td>
                 <td>@all_events.Address</td>
-                <td>@all_events.Description</td>
+                @*<td>@all_events.Description</td>*@
+                <td>
+                    <a href=/Event/ViewEvent/@all_events.EventID>View</a> |
+                    <a href="/Event/ViewUpdateEvent/@all_events.EventID">Update</a>
+                </td>
             </tr>
         }
 

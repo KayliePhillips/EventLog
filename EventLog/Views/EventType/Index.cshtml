@@ -9,7 +9,6 @@
 <div id="table-pages">
     <table class="table">
         <tr>
-            <th>ID</th>
             <th>EventType Name</th>
             <th>Update or Delete Event Type</th>
 
@@ -18,7 +17,6 @@
         @foreach (var eventType in @Model)
         {
             <tr>
-                <td>@eventType.EventTypeID</td>
                 <td>@eventType.EventTypeName</td>
                 <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID"> @eventType.EventTypeName</a></td>
 

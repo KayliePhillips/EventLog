@@ -99,3 +99,8 @@ h3{
 .delete-button-alignment{
     display: inline-block;
 }
+
+.update-event-table-heading{
+    color:white;
+    font-size:1rem;
+}

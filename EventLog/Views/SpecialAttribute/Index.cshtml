@@ -10,7 +10,7 @@
 <div id ="table-pages">
     <table class="table">
         <tr>
-            <th>ID</th>
+            
             <th>Special Attribute Name</th>
             <th>Update or Delete </th>
 
@@ -19,7 +19,7 @@
         @foreach (var specialAttribute in @Model)
         {
             <tr>
-                <td>@specialAttribute.SpecialAttributeID</td>
+                
                 <td>@specialAttribute.SpecialAttributeName</td>
                 <td>
                     <a href="/SpecialAttribute/UpdateSpecialAttribute/@specialAttribute.SpecialAttributeID">

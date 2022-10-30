@@ -6,14 +6,14 @@
 {
     <input asp-for="EventID" type="hidden" value="@Model.EventID" />
 
-    <label asp-for="Date" class="control-label">Date</label>
+    <label asp-for="Date" class="update-event-table-heading">Date</label>
     <input type="text" name="Date" class="form-control" value="@Model.Date" />
 
-    <label asp-for="EventName" class="control-label">Event Name</label>
+    <label asp-for="EventName" class="update-event-table-heading">Event Name</label>
     <input type="text" name="EventName" class="form-control" value="@Model.EventName" />
 
     //Attendee drop down menu
-    <div class="form-group">
+    <div class="update-event-table-heading">
         <label for="">Select an Attendee</label>
         <select class="form-control" name="Attendees" value="">
             @foreach (var type in Model.AttendeeList)
@@ -24,7 +24,7 @@
     </div>
 
     //Event Type drop down menu
-    <div class="form-group">
+    <div class="update-event-table-heading">
         <label for="">Select an Event Type</label>
         <select class="form-control" name="EventType" value="">
             @foreach (var type in Model.EventTypeList)
@@ -35,7 +35,7 @@
     </div>
 
     //Special Attribute drop down menu
-    <div class="form-group">
+    <div class="update-event-table-heading">
         <label for="">Select a Special Attribute</label>
         <select class="form-control" name="SpecialAttribute" value="">
             @foreach (var type in Model.SpecialAttributeList)
@@ -45,10 +45,10 @@
         </select>
     </div>
 
-    <label asp-for="Address" class="control-label">Address</label>
+    <label asp-for="Address" class="update-event-table-heading">Address</label>
     <input type="text" name="Address" class="form-control" value="@Model.Address" />
 
-    <label asp-for="Description" class="control-label">Description</label>
+    <label asp-for="Description" class="update-event-table-heading">Description</label>
     <input type="text" name="Description" class="form-control" value=" @Model.Description" />
 
     

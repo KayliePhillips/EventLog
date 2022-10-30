@@ -6,26 +6,26 @@
 <div id="table-pages"> 
     <table class="table">
         <tr>
-            <th>ID</th>
+            
             <th>Date</th>
             <th>Event Name</th>
             <th>Attendees</th>
             <th>Event Type</th>
             <th>Special Attribute</th>
             <th>Address</th>
-            <th>Description</th>
+            @*<th>Description</th>*@
         </tr>
 
 
         <tr>
-            <td>@Model.EventID</td>
+            
             <td>@Model.Date</td>
             <td>@Model.EventName</td>
             <td>@Model.Attendees</td>
             <td>@Model.EventType</td>
             <td>@Model.SpecialAttribute</td>
             <td>@Model.Address</td>
-            <td>@Model.Description</td>
+            @*<td>@Model.Description</td>*@
         </tr>
 
 
@@ -33,9 +33,17 @@
 
 </div>
 
+<div id="table-pages">
+    <h4 align="center">Description</h4>
+    @Model.Description
+</div>
 
-<div style="display: block">
-    <a href="/Event/ViewUpdateEvent/@Model.EventID">Update Event</a>
+
+
+
+<div>
+    <a type="submit" value="Update Event" class="btn btn-success" href="/Event/ViewUpdateEvent/@Model.EventID">Update Event</a>
+    <a type="submit" value="Update Event" class="btn btn-success" href="/Event/Index/@Model.EventID">All Events</a>
 </div>
 
 <div style="display: block", align="right">
@@ -46,3 +54,7 @@
         <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete this event" />
     }
 </div>
+
+
+
+    @**@
