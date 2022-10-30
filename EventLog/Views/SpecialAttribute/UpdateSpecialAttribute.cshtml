@@ -1,18 +1,17 @@
 ﻿@model SpecialAttribute
 
-<h2>Update or Delete @Model.SpecialAttributeName</h2>
+<div class="update-and-delete-forms">
+    <h2>Special Attribute: @Model.SpecialAttributeName</h2>
+</div>
 
 @using (Html.BeginForm("UpdateSpecialAttributeToDatabase", "SpecialAttribute", "Post"))
 {
     <input asp-for="SpecialAttributeID" type="hidden" value="@Model.SpecialAttributeID" />
 
-    //<label asp-for="SpecialAttributeName" class="control-label">Update Special Attribute Name</label>
-   
-    //Form to write in
     <input type="text" name="SpecialAttributeName" class="form-control" value="@Model.SpecialAttributeName" />
-
-    //Update button
-    <input type="submit" value="Update Special Attribute" class="btn btn-primary" />
+    <p> </p>
+    
+    <input type="submit" value="Update Special Attribute" class="btn btn-success" />
 }
 
 
@@ -27,3 +26,12 @@
     }
 
 </div>
+
+
+
+
+
+
+
+
+

@@ -1,32 +1,38 @@
 ﻿@model Event
 
-<h3>@Model.EventType</h3>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Date</th>
-        <th>Event Name</th>
-        <th>Attendees</th>
-        <th>Event Type</th>
-        <th>Special Attribute</th>
-        <th>Address</th>
-        <th>Description</th>
-    </tr>
+<h2>@Model.EventType</h2>
 
 
-    <tr>
-        <td>@Model.EventID</td>
-        <td>@Model.Date</td>
-        <td>@Model.EventName</td>
-        <td>@Model.Attendees</td>
-        <td>@Model.EventType</td>
-        <td>@Model.SpecialAttribute</td>
-        <td>@Model.Address</td>
-        <td>@Model.Description</td>
-    </tr>
+<div id="table-pages"> 
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Event Name</th>
+            <th>Attendees</th>
+            <th>Event Type</th>
+            <th>Special Attribute</th>
+            <th>Address</th>
+            <th>Description</th>
+        </tr>
 
 
-</table>
+        <tr>
+            <td>@Model.EventID</td>
+            <td>@Model.Date</td>
+            <td>@Model.EventName</td>
+            <td>@Model.Attendees</td>
+            <td>@Model.EventType</td>
+            <td>@Model.SpecialAttribute</td>
+            <td>@Model.Address</td>
+            <td>@Model.Description</td>
+        </tr>
+
+
+    </table>
+
+</div>
+
 
 <div style="display: block">
     <a href="/Event/ViewUpdateEvent/@Model.EventID">Update Event</a>

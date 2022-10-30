@@ -30,7 +30,10 @@ namespace EventLog.Repositories
         }
         public void UpdateSpecialAttribute(SpecialAttribute specialAttributeToUpdate)
         {
-            _specialConn.Execute("UPDATE special_attribute SET SpecialAttributeName = @name WHERE SpecialAttributeID = @id",
+            //_specialConn.Execute("UPDATE special_attribute SET SpecialAttributeName = @name WHERE SpecialAttributeID = @id;",
+            //    new { name = specialAttributeToUpdate.SpecialAttributeName, id = specialAttributeToUpdate.SpecialAttributeID });
+
+            _specialConn.Execute("UPDATE special_attribute SET SpecialAttributeName = @name WHERE SpecialAttributeID = @id;",
                 new { name = specialAttributeToUpdate.SpecialAttributeName, id = specialAttributeToUpdate.SpecialAttributeID });
         }
 

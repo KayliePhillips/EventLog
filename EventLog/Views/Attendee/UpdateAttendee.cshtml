@@ -1,19 +1,21 @@
 ﻿@model Attendee
 
-<h2>Update or Delete @Model.AttendeeName</h2>
+
+<div class="update-and-delete-forms">
+
+<h2>Attendee: @Model.AttendeeName</h2>
+
+</div>
+
+
+
 
 @using (Html.BeginForm("UpdateAttendeeToDatabase", "Attendee", "Post"))
 {
     <input asp-for="AttendeeID" type="hidden" value="@Model.AttendeeID" />
-
-    <h4>
-        
-        <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
-    </h4>
-   
-
-
-    <input type="submit" value="Update Attendee" class="btn btn-primary" />
+    <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
+     
+    <input type="submit" value="Update Attendee" class="btn btn-success" />
 }
 
 <div style="display: block" , align="right">
