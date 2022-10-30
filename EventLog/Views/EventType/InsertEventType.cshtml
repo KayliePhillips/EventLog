@@ -5,10 +5,7 @@
 @using (Html.BeginForm("InsertNewEventTypeToDatabase", "EventType", "Post")) 
 {
     <input asp-for="EventTypeID" type="hidden" value="" />
-
-    <label asp-for="EventTypeName" class="control-label">New Event Type Name</label>
     <input type="text" name="EventTypeName" class="form-control" value="" />
-
-
+    <p></p>
     <input type="submit" value="Create Event Type" class="btn btn-success" />
 }

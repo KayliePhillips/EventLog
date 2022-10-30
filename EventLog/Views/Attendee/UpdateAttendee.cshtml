@@ -8,17 +8,16 @@
 </div>
 
 
-
-
 @using (Html.BeginForm("UpdateAttendeeToDatabase", "Attendee", "Post"))
 {
     <input asp-for="AttendeeID" type="hidden" value="@Model.AttendeeID" />
     <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
-     
+    <p></p>
     <input type="submit" value="Update Attendee" class="btn btn-success" />
+    
 }
 
-<div style="display: block" , align="right">
+<div style="display: block" align="right">
 
     @using (Html.BeginForm("DeleteAttendee", "Attendee", "Post"))
 
