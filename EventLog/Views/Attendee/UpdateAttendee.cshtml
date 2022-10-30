@@ -6,8 +6,11 @@
 {
     <input asp-for="AttendeeID" type="hidden" value="@Model.AttendeeID" />
 
-    <label asp-for="AttendeeName" class="control-label">Update Attendee</label>
-    <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
+    <h4>
+        
+        <input type="text" name="AttendeeName" class="form-control" value="@Model.AttendeeName" />
+    </h4>
+   
 
 
     <input type="submit" value="Update Attendee" class="btn btn-primary" />
