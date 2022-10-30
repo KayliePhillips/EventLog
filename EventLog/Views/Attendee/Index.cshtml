@@ -1,27 +1,30 @@
 ﻿@model IEnumerable<Attendee>
 
-<h2>All Attendees</h2>
+<h2 align ="center">All Attendees</h2>
 
 <div style="display: block">
     <a href="/Attendee/InsertAttendee/">Create a New Attendee</a>
 </div>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Attendee Name</th>
-        <th>Update or Delete Attendee</th>
-
-    </tr>
-
-    @foreach (var attendee in @Model)
-    {
+<div id="table-pages"> 
+    <table class="table">
         <tr>
-            <td>@attendee.AttendeeID</td>
-            <td>@attendee.AttendeeName</td>
-            <td><a href="/Attendee/UpdateAttendee/@attendee.AttendeeID"> @attendee.AttendeeName</a></td>
+            <th>ID</th>
+            <th>Attendee Name</th>
+            <th>Update or Delete Attendee</th>
 
         </tr>
-    }
 
-</table>
+        @foreach (var attendee in @Model)
+        {
+            <tr>
+                <td>@attendee.AttendeeID</td>
+                <td>@attendee.AttendeeName</td>
+                <td><a href="/Attendee/UpdateAttendee/@attendee.AttendeeID"> @attendee.AttendeeName</a></td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>

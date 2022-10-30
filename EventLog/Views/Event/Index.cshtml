@@ -1,48 +1,53 @@
 ﻿@model IEnumerable<Event>
 
-<h2>All Events</h2>
+<h2 align ="center">All Events</h2>
 
 <div style="display: block">
     <a href="/Event/InsertEvent/">Create a New Event</a>
 </div>
 
 <form asp-action="Index" method="get" align="right">
-    <div class="form-actions no-color" >
+    <div class="form-actions no-color">
         <p>
-             <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search"  /> 
+            <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" />
             @*<a asp-action="Index">Back to Full List</a>*@
         </p>
     </div>
 </form>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Date</th>
-        <th>Event Name</th>
-        <th>Attendees</th>
-        <th>Event Type</th>
-        <th>Special Attribute</th>
-        <th>Address</th>
-        <th>Description</th>
-    </tr>
+<div id="table-pages">
 
-    @foreach (var all_events in @Model)
-    {
+    <table class="table">
         <tr>
-            <td><a href=/Event/ViewEvent/@all_events.EventID>@all_events.EventID</a></td>
-            <td>@all_events.Date</td>
-            <td>@all_events.EventName</td>
-            <td>@all_events.Attendees</td>
-            <td>@all_events.EventType</td>
-            <td>@all_events.SpecialAttribute</td>
-            <td>@all_events.Address</td>
-            <td>@all_events.Description</td>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Event Name</th>
+            <th>Attendees</th>
+            <th>Event Type</th>
+            <th>Special Attribute</th>
+            <th>Address</th>
+            <th>Description</th>
         </tr>
-    }
 
-</table>
+        @foreach (var all_events in @Model)
+        {
+            <tr>
+                <td><a href=/Event/ViewEvent/@all_events.EventID>@all_events.EventID</a></td>
+                <td>@all_events.Date</td>
+                <td>@all_events.EventName</td>
+                <td>@all_events.Attendees</td>
+                <td>@all_events.EventType</td>
+                <td>@all_events.SpecialAttribute</td>
+                <td>@all_events.Address</td>
+                <td>@all_events.Description</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
 
 
 

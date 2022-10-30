@@ -1,27 +1,31 @@
 ﻿@model IEnumerable<EventType>
 
-<h2>All Event Types</h2>
+<h2 align="center">All Event Types</h2>
 
 <div style="display: block">
     <a href="/EventType/InsertEventType/">Create a New Event Type</a>
 </div>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>EventType Name</th>
-        <th>Update or Delete Event Type</th>
-       
-    </tr>
-
-    @foreach (var eventType in @Model)
-    {
+<div id="table-pages">
+    <table class="table">
         <tr>
-            <td>@eventType.EventTypeID</td>
-            <td>@eventType.EventTypeName</td>
-            <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID"> @eventType.EventTypeName</a></td>
-           
-        </tr>
-    }
+            <th>ID</th>
+            <th>EventType Name</th>
+            <th>Update or Delete Event Type</th>
 
-</table>
+        </tr>
+
+        @foreach (var eventType in @Model)
+        {
+            <tr>
+                <td>@eventType.EventTypeID</td>
+                <td>@eventType.EventTypeName</td>
+                <td><a href="/EventType/UpdateEventType/@eventType.EventTypeID"> @eventType.EventTypeName</a></td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+
