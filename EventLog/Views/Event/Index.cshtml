@@ -20,15 +20,37 @@
 
     <table class="table">
         <tr>
-            
-            <th>Date</th>
-            <th>Event Name</th>
-            <th>Attendees</th>
-            <th>Event Type</th>
-            <th>Special Attribute</th>
-            <th>Address</th>
-            @*<th>Description</th>*@
-            <th></th>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]"> 
+                   @Html.DisplayNameFor(model=>model.Date)
+               </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["EventNameSortParam"]">
+                    @Html.DisplayNameFor(model=>model.EventName)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AttendeeSortParam"]">
+                    @Html.DisplayNameFor(model=>model.Attendees)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["EventTypeSortParam"]">
+                    @Html.DisplayNameFor(model=>model.EventType)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SpecialAttributeSortParam"]">
+                    @Html.DisplayNameFor(model=>model.SpecialAttribute)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AddressSortParam"]">
+                    @Html.DisplayNameFor(model=>model.Address)
+                </a>
+            </th>
+             <th></th>
         </tr>
 
         @foreach (var all_events in @Model)

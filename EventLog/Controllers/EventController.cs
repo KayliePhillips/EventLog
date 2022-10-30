@@ -62,17 +62,19 @@ namespace EventLog.Controllers
         }
 
         //Search -- needed to update the index method
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string sortOrder, string searchString)
         {
 
-            //ViewData["DateSortParam"] = sortOrder == "Date" ? "date_desc" : "Date";
-           // ViewData["EventNameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-          //  ViewData["Attendees"] = sortOrder == "Attendees" ? "attendee_desc" : "";
-            _=ViewData["CurrentFilter"] == searchString;
+            ViewData["DateSortParam"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewData["EventNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "eventName_desc" : "eventName";
+            ViewData["AttendeeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "attendee_desc" : "attendee";
+            ViewData["EventTypeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "eventType_desc" : "eventType";
+            ViewData["SpecialAttributeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "specialAttribute_desc" : "specialAttribute";
+            ViewData["AddressSortParam"] = String.IsNullOrEmpty(sortOrder) ? "address_desc" : "address";
+            _ = ViewData["CurrentFilter"] == searchString;
 
             var events = _repo.GetAllEvents();
-            //var eventtype = _eventTypeRepo.GetAllEventTypes();
-
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 events = events.Where(x => x.EventName.ToLower().Contains(searchString.ToLower()) || x.EventType.ToLower().Contains(searchString.ToLower()) ||
@@ -82,24 +84,21 @@ namespace EventLog.Controllers
 
             }
 
-            //switch (sortOrder)
-            //{
-            //    case "Date":
-            //        events = events.OrderByDescending(s => s.Date);
-            //        break;
-            //    case "name_desc":
-            //        events = events.OrderByDescending(s => s.EventType);
-            //        break;
-            //    case "Attendees":
-            //        events = events.OrderByDescending(s => s.Attendees);
-            //        break;
-            //    default:
-            //        events = events.OrderByDescending(s => s.EventType);
-            //        break;
-            //};
-
-
-
+            switch (sortOrder)
+            {
+                case "date_desc" : events = events.OrderByDescending(s => s.Date); break;
+                case "eventName" : events = events.OrderBy(s => s.EventName); break;
+                case "eventName_desc": events = events.OrderByDescending(s => s.EventName); break;
+                case "attendee" : events=events.OrderBy(s => s.Attendees); break;
+                case "attendee_desc" : events = events.OrderByDescending(s => s.Attendees); break;
+                case "eventType" : events = events.OrderBy(s => s.EventType); break;
+                case "eventType_desc" : events = events.OrderByDescending(s => s.EventType); break;
+                case "specialAttribute" : events = events.OrderBy(s => s.Attendees); break;
+                case "specialAtribute_desc" : events = events.OrderByDescending(s => s.Attendees); break;
+                case "address": events = events.OrderBy(s => s.Address); break;
+                case "address_desc": events = events.OrderByDescending(s => s.Address); break;
+                default: events = events.OrderBy(s => s.Date); break;
+            };
             return View(events);
 
 
