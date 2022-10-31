@@ -15,7 +15,7 @@
     //Attendee drop down menu
     <div class="update-event-table-heading">
         <label for="">Select an Attendee</label>
-        <select class="form-control" name="Attendees" value="">
+        <select class="form-control" name="Attendees" value="@Model.Attendees">
             @foreach (var type in Model.AttendeeList)
             {
                 <option value="@type.AttendeeName">@type.AttendeeName</option>
@@ -26,7 +26,7 @@
     //Event Type drop down menu
     <div class="update-event-table-heading">
         <label for="">Select an Event Type</label>
-        <select class="form-control" name="EventType" value="">
+        <select class="form-control" name="EventType" value="@Model.EventType">
             @foreach (var type in Model.EventTypeList)
             {
                 <option value="@type.EventTypeName">@type.EventTypeName</option>
@@ -37,7 +37,7 @@
     //Special Attribute drop down menu
     <div class="update-event-table-heading">
         <label for="">Select a Special Attribute</label>
-        <select class="form-control" name="SpecialAttribute" value="">
+        <select class="form-control" name="SpecialAttribute" value="@Model.SpecialAttribute">
             @foreach (var type in Model.SpecialAttributeList)
             {
                 <option value="@type.SpecialAttributeName">@type.SpecialAttributeName</option>

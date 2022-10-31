@@ -6,6 +6,7 @@
 
 @using (Html.BeginForm("UpdateSpecialAttributeToDatabase", "SpecialAttribute", "Post"))
 {
+
     <input asp-for="SpecialAttributeID" type="hidden" value="@Model.SpecialAttributeID" />
 
     <input type="text" name="SpecialAttributeName" class="form-control" value="@Model.SpecialAttributeName" />

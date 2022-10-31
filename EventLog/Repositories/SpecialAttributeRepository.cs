@@ -16,7 +16,7 @@ namespace EventLog.Repositories
          
         public IEnumerable<SpecialAttribute> GetAllSpecialAttributes()
         {
-            return _specialConn.Query<SpecialAttribute>("SELECT * FROM special_attribute;");
+            return _specialConn.Query<SpecialAttribute>("SELECT * FROM special_attribute ORDER BY SpecialAttributeName;");
         }
         public void InsertSpecialAttribute(SpecialAttribute specialAttributeToInsert)
         {

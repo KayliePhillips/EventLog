@@ -15,7 +15,7 @@ namespace EventLog.Repositories
 
         public IEnumerable<EventType> GetAllEventTypes()
         {
-            return _connection.Query<EventType>("SELECT * FROM event_type;");
+            return _connection.Query<EventType>("SELECT * FROM event_type ORDER BY EventTypeName;");
         }
 
         public void InsertEventType(EventType eventTypeToInsert)

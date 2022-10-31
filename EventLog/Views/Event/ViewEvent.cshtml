@@ -4,15 +4,9 @@
 
 <div>
 
-    <a href="/Event/ViewUpdateEvent/@Model.EventID" type="submit" value="Update Event" class="btn btn-success" data-inline="true">Update Event</a>
-    <a href="/Event/Index/@Model.EventID" type="submit" value="Update Event" class="btn btn-success" data-inline="true">All Events</a>
-    <a float="right </a>
-
-    @using (Html.BeginForm("DeleteEvent", "Event", "Post"))
-    {
-    <input type="hidden" asp-for="EventID" value="@Model.EventID" />
-    <input type="submit" class="btn btn-danger" float="right" onclick="return confirm('Are you sure?')" value="Delete this event" />
-    }
+    <a href="/Event/ViewUpdateEvent/@Model.EventID" type="submit" value="Update Event" class="btn btn-success">Update Event</a>
+    <a href="/Event/Index/@Model.EventID" type="submit" value="Update Event" class="btn btn-success">Return to All Events</a>
+    
 </div>
 <p> </p>
 
@@ -49,7 +43,13 @@
     @Model.Description
 </div>
 
-
+<div style="display: block" , align="right">
+    @using (Html.BeginForm("DeleteEvent", "Event", "Post"))
+    {
+        <input type="hidden" asp-for="EventID" value="@Model.EventID" />
+        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete this event" />
+    }
+</div>
 
 
 

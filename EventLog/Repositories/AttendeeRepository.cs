@@ -15,7 +15,7 @@ namespace EventLog.Repositories
 
         public IEnumerable<Attendee> GetAllAttendees()
         {
-            return _attendeeConn.Query<Attendee>("SELECT * FROM attendee;");
+            return _attendeeConn.Query<Attendee>("SELECT * FROM attendee ORDER BY AttendeeName;");
         }
 
         public void InsertAttendee(Attendee attendeeToInsert)
