@@ -9,10 +9,8 @@ namespace EventLog.Models
     {
         public int EventID { get; set; }
         public string? EventName { get; set; } = string.Empty;
-
         public string? Date { get; set; } = string.Empty;
         public string? Attendees { get; set; } = string.Empty;
-
         public string? EventType { get; set; } = string.Empty;
         public string? SpecialAttribute { get; set; } = string.Empty;
         public string? Address { get; set; } = string.Empty;

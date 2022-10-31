@@ -53,15 +53,11 @@ namespace EventLog.Controllers
             _repo.UpdateEvent(eventToUpdate);
             return RedirectToAction("ViewEvent", new { id = eventToUpdate.EventID });
         }
-
-        //Delete event
         public IActionResult DeleteEvent(Event eventToDelete)
         {
             _repo.DeleteEvent(eventToDelete);
             return RedirectToAction("Index");
         }
-
-        //Search -- needed to update the index method
         public IActionResult Index(string sortOrder, string searchString)
         {
 
@@ -101,10 +97,6 @@ namespace EventLog.Controllers
             };
             return View(events);
 
-
-
         }
-
-
     }
 }

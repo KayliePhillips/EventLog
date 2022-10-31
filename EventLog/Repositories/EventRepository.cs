@@ -64,25 +64,21 @@ namespace EventLog.Repositories
             
             return eventToUpdate;
         }
-        //Event Type Section
+        
         public IEnumerable<EventType> GetEventTypes()
         {
             return _conn.Query<EventType>("SELECT * FROM event_type;");
         }
-
-        //Special attribute section
         public IEnumerable<SpecialAttribute> GetSpecialAttribute()
         {
             return _conn.Query<SpecialAttribute>("SELECT * FROM special_attribute;");
         }
 
-        //Attendee section
         public IEnumerable<Attendee> GetAttendee()
         {
             return _conn.Query<Attendee>("SELECT * FROM attendee;");
         }
 
-        //Update event
         public void UpdateEvent(Event eventToUpdate)
         {
             _conn.Execute("UPDATE all_events SET Date=@date, EventName=@eventName, Attendees=@attendees, EventType=@eventType, " +

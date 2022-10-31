@@ -11,15 +11,13 @@ namespace EventLog.Repositories
 
         public void InsertEvent(Event eventToInsert);
 
-        //Related to event_type
+        
         public IEnumerable<EventType> GetEventTypes();
         public Event AssignEventProperties();
         public Event AssignEventProperties(Event eventToUpdate);
 
-        //related to special_attribute
         public IEnumerable<SpecialAttribute> GetSpecialAttribute();
 
-        //related to attendee
         public IEnumerable<Attendee> GetAttendee();
 
         public void UpdateEvent(Event eventToUpdate);
