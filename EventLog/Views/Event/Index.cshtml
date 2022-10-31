@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<Event>
 
+    <p></p>
+<form asp-action="Index" method="get" align="right">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="SearchString" data-inline="true" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" />
+        </p>
+    </div>
+</form>
+
 <h2>All Events</h2>
 
 <div >
     
     <a class="btn btn-outline-light" href="/Event/InsertEvent/" data-inline="true">Create a New Event</a>
 </div>
-
-<form asp-action="Index" method="get" align="right">
-    <div class="form-actions no-color">
-        <p>
-            <input type="text" name="SearchString" data-inline="true" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" />
-            @*<a asp-action="Index">Back to Full List</a>*@
-        </p>
-    </div>
-</form>
-
+<p></p>
 <div id="table-pages">
 
     <table class="table">
