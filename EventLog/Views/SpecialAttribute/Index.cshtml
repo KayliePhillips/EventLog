@@ -18,14 +18,12 @@
         @foreach (var specialAttribute in @Model)
         {
             <tr>
-                
                 <td>@specialAttribute.SpecialAttributeName</td>
                 <td>
                     <a href="/SpecialAttribute/UpdateSpecialAttribute/@specialAttribute.SpecialAttributeID">
                         @specialAttribute.SpecialAttributeName
                     </a>
                 </td>
-
             </tr>
         }
 

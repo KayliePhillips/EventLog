@@ -12,17 +12,14 @@ namespace EventLog.Repositories
         {
             _conn = conn;
         }
-
         public IEnumerable<Event> GetAllEvents()
         {
             return _conn.Query<Event>("SELECT * FROM all_events;");
         }
-
         public Event GetEvent(int id)
         {
             return _conn.QuerySingle<Event>("SELECT * FROM all_events WHERE EventID = @ID", new { id });
         }
-
         public void InsertEvent(Event eventToInsert)
         {
             _conn.Execute("INSERT INTO all_events (Date, EventName, Attendees, EventType, SpecialAttribute, Address, Description) " +
@@ -101,7 +98,5 @@ namespace EventLog.Repositories
         {
             _conn.Execute("DELETE FROM all_events WHERE EventID = @id;", new { id = eventToDelete.EventID });
         }
-
-
     }
 }

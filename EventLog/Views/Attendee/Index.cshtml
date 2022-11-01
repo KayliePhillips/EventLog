@@ -9,19 +9,15 @@
 <div id="table-pages"> 
     <table class="table">
         <tr>
-            
             <th>Attendee Name</th>
             <th>Update or Delete Attendee</th>
-
         </tr>
 
         @foreach (var attendee in @Model)
         {
             <tr>
-                
                 <td>@attendee.AttendeeName</td>
                 <td><a href="/Attendee/UpdateAttendee/@attendee.AttendeeID"> @attendee.AttendeeName</a></td>
-
             </tr>
         }
 

@@ -12,12 +12,10 @@ namespace EventLog.Repositories
         {
             _connection = connection;
         }
-
         public IEnumerable<EventType> GetAllEventTypes()
         {
             return _connection.Query<EventType>("SELECT * FROM event_type ORDER BY EventTypeName;");
         }
-
         public void InsertEventType(EventType eventTypeToInsert)
         {
             _connection.Execute("INSERT INTO event_type (EventTypeName) VALUES (@EventTypeName);", new { eventTypeToInsert.EventTypeName });

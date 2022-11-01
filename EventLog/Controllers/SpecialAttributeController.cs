@@ -17,25 +17,21 @@ namespace EventLog.Controllers
         {
             _specialAttributeRepository = specialAttributeRepository;
         }
-
         public IActionResult Index()
         {
             var allSpecialAttributesList = _specialAttributeRepository.GetAllSpecialAttributes();
             return View(allSpecialAttributesList);
         }
-
         public IActionResult InsertSpecialAttribute()
         {
             return View();
         }
-
         public IActionResult InsertNewSpecialAttributeToDatabase(SpecialAttribute specialAttributeToInsert)
         {
             _specialAttributeRepository.InsertSpecialAttribute(specialAttributeToInsert);
             return RedirectToAction("Index");
 
         }
-
         public IActionResult UpdateSpecialAttribute(int id)
         {
             var specialAttribute = _specialAttributeRepository.GetSpecialAttribute(id);
@@ -45,13 +41,11 @@ namespace EventLog.Controllers
             }
             return View(specialAttribute);
         }
-
         public IActionResult UpdateSpecialAttributeToDatabase(SpecialAttribute specialAttributeToUpdate)
         {
             _specialAttributeRepository.UpdateSpecialAttribute(specialAttributeToUpdate);
             return RedirectToAction("Index");
         }
-
         public IActionResult DeleteSpecialAttribute(SpecialAttribute specialAttributeToDelete)
         {
             _specialAttributeRepository.DeleteSpecialAttribute(specialAttributeToDelete);

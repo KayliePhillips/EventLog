@@ -18,25 +18,21 @@ namespace EventLog.Controllers
         {
             _repo = repo;
         }
-
         public IActionResult ViewEvent(int id)
         {
             var viewEvent = _repo.GetEvent(id);
             return View(viewEvent);
         }
-        
         public IActionResult InsertEvent()
         {
             var newEvent = _repo.AssignEventProperties();
             return View(newEvent);
         }
-          
         public IActionResult InsertNewEventToDatabase(Event eventToInsert)
         {
             _repo.InsertEvent(eventToInsert);
             return RedirectToAction("Index");
         }
-
         public IActionResult ViewUpdateEvent(int id)
         {
             var updateEvent = _repo.GetEvent(id);
@@ -47,7 +43,6 @@ namespace EventLog.Controllers
             }
             return View(updateEvent);
         }
-
         public IActionResult UpdateEventToDatabase(Event eventToUpdate)
         {
             _repo.UpdateEvent(eventToUpdate);

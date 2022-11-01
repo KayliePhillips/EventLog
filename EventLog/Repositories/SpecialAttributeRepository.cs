@@ -13,7 +13,6 @@ namespace EventLog.Repositories
         {
             _specialConn = specialConn;
         }
-         
         public IEnumerable<SpecialAttribute> GetAllSpecialAttributes()
         {
             return _specialConn.Query<SpecialAttribute>("SELECT * FROM special_attribute ORDER BY SpecialAttributeName;");
@@ -23,7 +22,6 @@ namespace EventLog.Repositories
             _specialConn.Execute("INSERT INTO special_attribute (SpecialAttributeName) VALUES (@SpecialAttributeName);",
                 new { specialAttributeToInsert.SpecialAttributeName });
         }
-
         public SpecialAttribute GetSpecialAttribute(int id)
         {
             return _specialConn.QuerySingle<SpecialAttribute>("SELECT * FROM special_attribute WHERE SpecialattributeID = @id;", new {id});
@@ -33,13 +31,11 @@ namespace EventLog.Repositories
             _specialConn.Execute("UPDATE special_attribute SET SpecialAttributeName = @name WHERE SpecialAttributeID = @id;",
                 new { name = specialAttributeToUpdate.SpecialAttributeName, id = specialAttributeToUpdate.SpecialAttributeID });
         }
-
         public void DeleteSpecialAttribute(SpecialAttribute specialAttributeToDelete)
         {
             _specialConn.Execute("DELETE FROM all_events WHERE SpecialAttribute = @name;", new { name = specialAttributeToDelete.SpecialAttributeName });
             _specialConn.Execute("DELETE FROM special_attribute WHERE SpecialAttributeName = @name;", new { name = specialAttributeToDelete.SpecialAttributeName });
         }
-
 
     }
 }
