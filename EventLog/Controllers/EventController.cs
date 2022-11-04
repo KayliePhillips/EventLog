@@ -56,7 +56,7 @@ namespace EventLog.Controllers
         public IActionResult Index(string sortOrder, string searchString)
         {
 
-            ViewData["DateSortParam"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewData["DateSortParam"] = String.IsNullOrEmpty(sortOrder) ? "date" : "date_desc";
             ViewData["EventNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "eventName_desc" : "eventName";
             ViewData["AttendeeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "attendee_desc" : "attendee";
             ViewData["EventTypeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "eventType_desc" : "eventType";
@@ -77,7 +77,8 @@ namespace EventLog.Controllers
 
             switch (sortOrder)
             {
-                case "date_desc" : events = events.OrderByDescending(s => s.Date); break;
+                case "date" : events = events.OrderBy(s => s.Date); break;
+                case "date_desc": events = events.OrderByDescending(s => s.Date); break;
                 case "eventName" : events = events.OrderBy(s => s.EventName); break;
                 case "eventName_desc": events = events.OrderByDescending(s => s.EventName); break;
                 case "attendee" : events=events.OrderBy(s => s.Attendees); break;
@@ -88,7 +89,7 @@ namespace EventLog.Controllers
                 case "specialAtribute_desc" : events = events.OrderByDescending(s => s.Attendees); break;
                 case "address": events = events.OrderBy(s => s.Address); break;
                 case "address_desc": events = events.OrderByDescending(s => s.Address); break;
-                default: events = events.OrderBy(s => s.Date); break;
+                default: events = events.OrderByDescending(s => s.Date); break;
             };
             return View(events);
 
