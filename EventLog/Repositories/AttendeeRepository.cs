@@ -18,7 +18,8 @@ namespace EventLog.Repositories
         }
         public void InsertAttendee(Attendee attendeeToInsert)
         {
-            _attendeeConn.Execute("INSERT INTO attendee (AttendeeName) VALUES (@AttendeeName);", new { attendeeToInsert.AttendeeName });
+            _attendeeConn.Execute("INSERT INTO attendee (AttendeeName) VALUES (@AttendeeName) ORDER BY SpecialAttributeName;", 
+                new { attendeeToInsert.AttendeeName });
         }
         public Attendee GetAttendee(int id)
         {
@@ -26,7 +27,7 @@ namespace EventLog.Repositories
         }
         public void UpdateAttendee(Attendee attendeeToUpdate)
         {
-            _attendeeConn.Execute("UPDATE attendee SET AttendeeName = @name WHERE AttendeeID = @id", 
+            _attendeeConn.Execute("UPDATE attendee SET AttendeeName = @name WHERE AttendeeID = @id ORDER BY SpecialAttributeName", 
                 new { name = attendeeToUpdate.AttendeeName, id = attendeeToUpdate.AttendeeID});
         }
         public void DeleteAttendee(Attendee attendeeToDelete)

@@ -64,11 +64,11 @@ namespace EventLog.Repositories
         
         public IEnumerable<EventType> GetEventTypes()
         {
-            return _conn.Query<EventType>("SELECT * FROM event_type;");
+            return _conn.Query<EventType>("SELECT * FROM event_type ORDER BY EventTypeName;");
         }
         public IEnumerable<SpecialAttribute> GetSpecialAttribute()
         {
-            return _conn.Query<SpecialAttribute>("SELECT * FROM special_attribute;");
+            return _conn.Query<SpecialAttribute>("SELECT * FROM special_attribute ORDER BY SpecialAttributeName;");
         }
 
         public IEnumerable<Attendee> GetAttendee()
